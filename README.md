@@ -2,6 +2,8 @@
 
 **Apex Agent 官方 MCP 服务器仓库** —— 101 台经真实验证的服务器、19 个分类，沙箱（PRoot Ubuntu 内 npx/uvx）与远端（HTTP）双形态，从应用内「市场 → MCP → 官方 MCP 仓库」安装、配置、启动。
 
+> **v2.4 命名规范化（2026-10）**：101 台服务器的 `name` 与 19 个 `categories` 键统一改为 PascalCase（大写字母开头、仅字母数字，不再出现 `-` 与 `_`）——例如 `WebSearch`、`ReverseEngineering`、`ServerGithub`；`command`/`args`/`url`/`env` 等外部标识与包名不变。下方 v2 / v2.1 / v2.3 历史章节保留当时的命名原貌，以「目录矩阵」「条目格式」两节为准。
+
 > **v2.3 逆向工程独立成类**：新增 `reverse-engineering` 逆向工程类（15 台），security 中 10 台逆向工具迁入，security 聚焦攻防与情报；新增 7 台实测服务器（reversecore / mitmproxy / gdb / cyberchef / mobsf / cve / metasploit），总量 94 → 101 台。
 
 [English](#english) below.
@@ -35,25 +37,25 @@
 
 | 类 | 数 | 服务器 |
 |---|---|---|
-| official 官方参考实现 | 4 | fetch、fetch-python、sequential-thinking、time |
-| docs 文档与知识 | 8 | arxiv、aws-docs、context7、context7-remote、deepwiki、microsoft-learn、paper-search、wikipedia |
-| web-search 网络搜索 | 7 | brave-search、duckduckgo、exa、firecrawl、kagi、omnisearch、tavily |
-| browser 浏览器自动化 | 4 | browserbase、chrome-devtools、playwright、puppeteer |
-| database 数据库 | 15 | astra-db、chroma、dbhub、duckdb、elasticsearch、influxdb、mongodb、motherduck、neo4j、neon、postgres、qdrant、redis、sqlite、supabase |
-| git Git 与代码托管 | 3 | git、gitlab、server-github |
-| cloud 云平台 | 4 | aws-billing、aws-iac、cloudflare、kubernetes |
-| observability 可观测性 | 4 | datadog、grafana、prometheus、sentry |
-| productivity 效率工具 | 9 | atlassian、excel、linear、notion、obsidian、office-word、pandoc、shrimp-task-manager、todoist |
-| desktop 桌面控制 | 2 | desktop-commander、commands |
-| communication 通信协作 | 3 | gmail-autoauth、server-slack、slack-remote |
-| location 地图位置 | 2 | amap、google-maps |
-| finance 金融支付 | 1 | stripe |
-| design 设计 | 3 | blender、figma-context、quickchart |
-| data 数据源 | 1 | gdrive |
-| devtools 开发效率 | 9 | android-emulator、apifox、gradle、jetbrains、mcp-inspector、mcp-remote、postman、serena、swagger |
-| **reverse-engineering 逆向工程** | 15 | android-mcp-server、apktool、binary-ninja、capstone、cyberchef、frida、gdb、ghidra、ida-pro、jadx、mitmproxy、mobsf、radare2、reversecore、volatility |
-| security 安全 | 6 | burp、cve、metasploit、nmap、semgrep、shodan |
-| ai-ml 人工智能 | 1 | aws-bedrock-kb |
+| Official 官方参考实现 | 4 | Fetch、FetchPython、SequentialThinking、Time |
+| Docs 文档与知识 | 8 | Arxiv、AwsDocs、Context7、Context7Remote、Deepwiki、MicrosoftLearn、PaperSearch、Wikipedia |
+| WebSearch 网络搜索 | 7 | BraveSearch、Duckduckgo、Exa、Firecrawl、Kagi、Omnisearch、Tavily |
+| Browser 浏览器自动化 | 4 | Browserbase、ChromeDevtools、Playwright、Puppeteer |
+| Database 数据库 | 15 | AstraDb、Chroma、Dbhub、Duckdb、Elasticsearch、Influxdb、Mongodb、Motherduck、Neo4j、Neon、Postgres、Qdrant、Redis、Sqlite、Supabase |
+| Git Git 与代码托管 | 3 | Git、Gitlab、ServerGithub |
+| Cloud 云平台 | 4 | AwsBilling、AwsIac、Cloudflare、Kubernetes |
+| Observability 可观测性 | 4 | Datadog、Grafana、Prometheus、Sentry |
+| Productivity 效率工具 | 9 | Atlassian、Excel、Linear、Notion、Obsidian、OfficeWord、Pandoc、ShrimpTaskManager、Todoist |
+| Desktop 桌面控制 | 2 | DesktopCommander、Commands |
+| Communication 通信协作 | 3 | GmailAutoauth、ServerSlack、SlackRemote |
+| Location 地图位置 | 2 | Amap、GoogleMaps |
+| Finance 金融支付 | 1 | Stripe |
+| Design 设计 | 3 | Blender、FigmaContext、Quickchart |
+| Data 数据源 | 1 | Gdrive |
+| Devtools 开发效率 | 9 | AndroidEmulator、Apifox、Gradle、Jetbrains、McpInspector、McpRemote、Postman、Serena、Swagger |
+| **ReverseEngineering 逆向工程** | 15 | AndroidMcpServer、Apktool、BinaryNinja、Capstone、Cyberchef、Frida、Gdb、Ghidra、IdaPro、Jadx、Mitmproxy、Mobsf、Radare2、Reversecore、Volatility |
+| Security 安全 | 6 | Burp、Cve、Metasploit、Nmap、Semgrep、Shodan |
+| AiMl 人工智能 | 1 | AwsBedrockKb |
 
 `scope` 分布：`coding` 66 / `agent` 16 / `all` 19 —— 市场按工位分级过滤。
 
@@ -72,7 +74,7 @@ scripts/validate.py     # 校验器（CI 用；--online 开启包存在性 + HTT
 
 ```json
 {
-  "name": "amap",
+  "name": "Amap",
   "description": "高德地图官方 MCP：地理编码/POI 搜索/路线规划/天气……",
   "transport": "STDIO",
   "command": "npx",
@@ -84,10 +86,10 @@ scripts/validate.py     # 校验器（CI 用；--online 开启包存在性 + HTT
   "requiresRootfs": true,
   "vendor": "amap",
   "tags": ["maps", "china", "routing"],
-  "category": "location",
+  "category": "Location",
   "homepage": "https://lbs.amap.com/api/mcp-server/gettingstarted",
   "envSchema": [{"key": "AMAP_MAPS_API_KEY", "required": true, "description": "……"}],
-  "notes": "国内地图场景对 google-maps 的互补。"
+  "notes": "国内地图场景对 GoogleMaps 的互补。"
 }
 ```
 
@@ -98,7 +100,7 @@ scripts/validate.py     # 校验器（CI 用；--online 开启包存在性 + HTT
 | `runInSandbox` / `requiresRootfs` | `true` = PRoot Ubuntu 沙箱内启动（Android 无宿主 node/python），需先装 rootfs |
 | `enabled` | 安装初始态恒 `false` —— **安装 ≠ 启动**（学习 opencode 的配置门控） |
 | `scope` | `agent` / `coding` / `all`（工位分级过滤） |
-| `category` | 19 类词表之一（v2 新增、v2.1 扩至 18 类，v2.3 新增 reverse-engineering，前向兼容） |
+| `category` | 19 类词表之一（v2 新增、v2.1 扩至 18 类，v2.3 新增 ReverseEngineering；v2.4 起统一 PascalCase，前向兼容） |
 | `envSchema` | 需要的环境变量声明（key/required/description）——供安装表单/配置引导渲染（前向兼容字段） |
 
 ## CI 校验（GitHub Actions）

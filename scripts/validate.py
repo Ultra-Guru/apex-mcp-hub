@@ -3,11 +3,11 @@
 
 校验规则（任何一条失败即退出码 1）：
  1. index.json 可解析、schema 正确、count 与 servers[] 实际一致；
- 2. 服务器 name 全局唯一、格式合法；
+ 2. 服务器 name 全局唯一、格式合法（PascalCase：大写字母开头，仅字母数字，禁止 - 与 _）；
  3. transport ∈ {STDIO, HTTP}；STDIO 必有 command/args、HTTP 必有 url（且互斥）；
  4. scope ∈ {agent, coding, all}；enabled 恒 false（安装 ≠ 启动）；
  5. requiresRootfs 与形态一致（STDIO 沙箱 true / HTTP 远端 false）；
- 6. category ∈ 19 类词表（15 既有 + v2.1 新增 devtools/security/ai-ml + v2.3 新增 reverse-engineering），
+ 6. category ∈ 19 类词表（15 既有 + v2.1 新增 Devtools/Security/AiMl + v2.3 新增 ReverseEngineering），
     且 categories 统计与实际条目一致；
  7. envSchema 每项含 key/required/description；
  8. 索引 ≤ 2MB（App 拉取上限）；
@@ -24,17 +24,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDEX = os.path.join(ROOT, "index.json")
 
 LEGAL_CATEGORIES = {
-    "official", "docs", "web-search", "browser", "database", "git", "cloud",
-    "observability", "productivity", "desktop", "finance", "design",
-    "communication", "location", "data",
+    "Official", "Docs", "WebSearch", "Browser", "Database", "Git", "Cloud", "Observability", "Productivity", "Desktop", "Finance", "Design", "Communication", "Location", "Data",
     # v2.1 新增三类（编码扩容：开发效率 / 安全 / 人工智能）
-    "devtools", "security", "ai-ml",
+    "Devtools", "Security", "AiMl",
     # v2.3 新增：逆向工程（自 security 拆分独立成类）
-    "reverse-engineering",
+    "ReverseEngineering",
 }
 LEGAL_SCOPES = {"agent", "coding", "all"}
 LEGAL_TRANSPORTS = {"STDIO", "HTTP", "SSE"}
-NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]{1,48}$")
+NAME_RE = re.compile(r"^[A-Z][A-Za-z0-9]{1,48}$")
 SECRET_RE = re.compile(r"(ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16})")
 INIT_BODY = json.dumps({
     "jsonrpc": "2.0", "id": 1, "method": "initialize",
