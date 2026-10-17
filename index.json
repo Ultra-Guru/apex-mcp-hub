@@ -4,84 +4,89 @@
   "description": "Apex Agent official MCP server repository — 80 verified servers across 18 categories (sandbox npx/uvx + hosted remote HTTP), installable on demand from the in-app Market.",
   "count": 101,
   "categories": {
-    "official": {
+    "Official": {
       "label": "官方参考实现",
       "count": 4
     },
-    "docs": {
+    "Docs": {
       "label": "文档与知识",
       "count": 8
     },
-    "web-search": {
+    "WebSearch": {
       "label": "网络搜索",
       "count": 7
     },
-    "browser": {
+    "Browser": {
       "label": "浏览器自动化",
       "count": 4
     },
-    "database": {
+    "Database": {
       "label": "数据库",
       "count": 15
     },
-    "git": {
+    "Git": {
       "label": "Git 与代码托管",
       "count": 3
     },
-    "cloud": {
+    "Cloud": {
       "label": "云平台",
       "count": 4
     },
-    "observability": {
+    "Observability": {
       "label": "可观测性",
       "count": 4
     },
-    "productivity": {
+    "Productivity": {
       "label": "效率工具",
       "count": 9
     },
-    "desktop": {
+    "Desktop": {
       "label": "桌面控制",
       "count": 2
     },
-    "finance": {
+    "Finance": {
       "label": "金融支付",
       "count": 1
     },
-    "design": {
+    "Design": {
       "label": "设计",
       "count": 3
     },
-    "communication": {
+    "Communication": {
       "label": "通信协作",
       "count": 3
     },
-    "location": {
+    "Location": {
       "label": "地图位置",
       "count": 2
     },
-    "data": {
+    "Data": {
       "label": "数据源",
       "count": 1
     },
-    "devtools": {
+    "Devtools": {
       "label": "开发效率",
       "count": 9
     },
-    "reverse-engineering": {
+    "ReverseEngineering": {
       "label": "逆向工程",
       "count": 15
     },
-    "security": {
+    "Security": {
       "label": "安全",
       "count": 6
     },
-    "ai-ml": {
+    "AiMl": {
       "label": "人工智能",
       "count": 1
     }
   },
   "changelog": [
+    {
+      "version": "2.4.0",
+      "date": "2026-10-16",
+      "notes": "命名规范化：全部服务器 name 与 categories 键改为 PascalCase（大写字母开头、仅字母数字，不再出现 - 与 _）——web-search → WebSearch、reverse-engineering → ReverseEngineering、server-github → ServerGithub、fetch → Fetch；command/args/url/env/headers 等外部标识与包名保持不变。App 端 MCP 分类映射同步更新；按旧名安装过的条目重新安装即可（配置值不变）。"
+    },
     {
       "version": "2.3.0",
       "date": "2026-10-07",
@@ -110,7 +115,7 @@
   ],
   "servers": [
     {
-      "name": "fetch",
+      "name": "Fetch",
       "description": "网页抓取服务器（node 纯 JS 形态）：URL → 干净 Markdown，内置分页与机器人规避。v2 修复：原 @modelcontextprotocol/server-fetch npm 包不存在，已切换为 @kazuph/mcp-fetch。",
       "transport": "STDIO",
       "command": "npx",
@@ -129,13 +134,13 @@
         "fetch",
         "markdown"
       ],
-      "category": "official",
+      "category": "Official",
       "homepage": "https://github.com/kazuph/mcp-fetch",
       "envSchema": [],
       "notes": "官方 Python 形态见 fetch-python（uvx）。"
     },
     {
-      "name": "fetch-python",
+      "name": "FetchPython",
       "description": "官方 Python 抓取服务器：网页转 Markdown、机器人仿真头、分页超时控制",
       "transport": "STDIO",
       "command": "uvx",
@@ -151,13 +156,13 @@
       "tags": [
         "official"
       ],
-      "category": "official",
+      "category": "Official",
       "homepage": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
       "envSchema": [],
       "notes": "需要 rootfs 内含 uv（uvx 自动拉起 mcp-server-fetch）。"
     },
     {
-      "name": "sequential-thinking",
+      "name": "SequentialThinking",
       "description": "官方顺序思考链服务器：动态分步推理、思路修正与分支——把长链推理从一次性输出变成可回溯的过程。",
       "transport": "STDIO",
       "command": "npx",
@@ -176,13 +181,13 @@
         "official",
         "thinking"
       ],
-      "category": "official",
+      "category": "Official",
       "homepage": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
       "envSchema": [],
       "notes": "与内置 thinking MCP 互补的官方参考实现。"
     },
     {
-      "name": "time",
+      "name": "Time",
       "description": "官方时间服务器（Python uvx 形态）：当前时间/时区换算与任意格式时间解析。v2 修复：原 @modelcontextprotocol/server-time npm 包不存在，已切换为 uvx mcp-server-time。",
       "transport": "STDIO",
       "command": "uvx",
@@ -200,13 +205,13 @@
         "official",
         "timezone"
       ],
-      "category": "official",
+      "category": "Official",
       "homepage": "https://github.com/modelcontextprotocol/servers/tree/main/src/time",
       "envSchema": [],
       "notes": "沙箱需 python + uv（rootfs 内预装）。"
     },
     {
-      "name": "arxiv",
+      "name": "Arxiv",
       "description": "arXiv 论文检索 MCP：多条件检索、下载 PDF 到本地文献库、提取全文与参考文献，配合 Semantic Scholar 引用增强——写综述、追新论文与深读文献的科研工作流。",
       "transport": "STDIO",
       "command": "uvx",
@@ -226,7 +231,7 @@
         "research",
         "papers"
       ],
-      "category": "docs",
+      "category": "Docs",
       "homepage": "https://github.com/blazickjp/arxiv-mcp-server",
       "envSchema": [
         {
@@ -238,7 +243,7 @@
       "notes": "论文 PDF 存放在 --storage-path（默认沙箱 /workspace/arxiv）。"
     },
     {
-      "name": "aws-docs",
+      "name": "AwsDocs",
       "description": "AWS 官方文档 MCP（awslabs）：搜索 AWS 官方文档、整页转 Markdown 精读、大表格按行过滤（服务配额/定价），并附相关文档推荐——云开发查文档不必离开对话窗口。",
       "transport": "STDIO",
       "command": "uvx",
@@ -256,13 +261,13 @@
         "aws",
         "reference"
       ],
-      "category": "docs",
+      "category": "Docs",
       "homepage": "https://github.com/awslabs/mcp/tree/main/src/aws-documentation-mcp-server",
       "envSchema": [],
       "notes": "免密钥即用；与 microsoft-learn 同为厂商官方文档直连。"
     },
     {
-      "name": "context7",
+      "name": "Context7",
       "description": "任何库/框架的最新文档实时检索（Upstash Context7）——对抗训练数据过时，直查现行版本文档。",
       "transport": "STDIO",
       "command": "npx",
@@ -281,7 +286,7 @@
         "coding",
         "libraries"
       ],
-      "category": "docs",
+      "category": "Docs",
       "homepage": "https://github.com/upstash/context7",
       "envSchema": [
         {
@@ -293,7 +298,7 @@
       "notes": "免沙箱远端形态见 context7-remote。"
     },
     {
-      "name": "context7-remote",
+      "name": "Context7Remote",
       "description": "Context7 免沙箱远端形态：库文档实时检索的 HTTP 端点，无需 rootfs / npx，装好即连。",
       "transport": "HTTP",
       "url": "https://mcp.context7.com/mcp",
@@ -308,13 +313,13 @@
         "remote",
         "libraries"
       ],
-      "category": "docs",
+      "category": "Docs",
       "homepage": "https://github.com/upstash/context7",
       "envSchema": [],
       "notes": "沙箱 npx 形态见 context7。"
     },
     {
-      "name": "deepwiki",
+      "name": "Deepwiki",
       "description": "DeepWiki 远端 MCP：就任意公开 GitHub 仓库直接提问（架构/实现/用法），免密钥即连的代码理解外脑。",
       "transport": "HTTP",
       "url": "https://mcp.deepwiki.com/mcp",
@@ -329,13 +334,13 @@
         "github",
         "remote"
       ],
-      "category": "docs",
+      "category": "Docs",
       "homepage": "https://github.com/AsyncFuncAI/deepwiki-mcp",
       "envSchema": [],
       "notes": "免沙箱远端形态，零配置。"
     },
     {
-      "name": "microsoft-learn",
+      "name": "MicrosoftLearn",
       "description": "微软官方远端 MCP：检索 Microsoft/Azure 官方文档与代码示例（docs_search / code_sample_search / docs_fetch 三工具流），免密钥直连。",
       "transport": "HTTP",
       "url": "https://learn.microsoft.com/api/mcp",
@@ -350,13 +355,13 @@
         "azure",
         "remote"
       ],
-      "category": "docs",
+      "category": "Docs",
       "homepage": "https://learn.microsoft.com/azure/developer/azure-mcp/",
       "envSchema": [],
       "notes": "官方托管端点，流式 HTTP，零配置。"
     },
     {
-      "name": "paper-search",
+      "name": "PaperSearch",
       "description": "学术论文检索服务器（node 形态）：arXiv / PubMed / bioRxiv 多源论文搜索与全文下载链接，写综述查文献的利器。",
       "transport": "STDIO",
       "command": "npx",
@@ -375,13 +380,13 @@
         "arxiv",
         "papers"
       ],
-      "category": "docs",
+      "category": "Docs",
       "homepage": "https://github.com/OpenSciHackathon/paper-search-mcp-nodejs",
       "envSchema": [],
       "notes": "无需 API Key，即装即用。"
     },
     {
-      "name": "wikipedia",
+      "name": "Wikipedia",
       "description": "维基百科 MCP：搜索条目、读摘要与全文、定位章节、查多语言版本与相邻页面，摘要与全文可分段返回——事实核查、背景调研与知识问答的免费数据源，无需任何密钥即装即用。",
       "transport": "STDIO",
       "command": "npx",
@@ -400,7 +405,7 @@
         "encyclopedia",
         "research"
       ],
-      "category": "docs",
+      "category": "Docs",
       "homepage": "https://github.com/cyanheads/wikipedia-mcp-server",
       "envSchema": [
         {
@@ -412,7 +417,7 @@
       "notes": "REST API 免鉴权，零配置即装即用。"
     },
     {
-      "name": "brave-search",
+      "name": "BraveSearch",
       "description": "Brave 搜索服务器：网页/新闻/图片搜索、安全分级与分页（已归档参考实现）",
       "transport": "STDIO",
       "command": "npx",
@@ -429,7 +434,7 @@
       "tags": [
         "web-search"
       ],
-      "category": "web-search",
+      "category": "WebSearch",
       "homepage": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/brave-search",
       "envSchema": [
         {
@@ -441,7 +446,7 @@
       "notes": "官方 reference servers 已归档（servers-archived），仍可安装使用。"
     },
     {
-      "name": "duckduckgo",
+      "name": "Duckduckgo",
       "description": "DuckDuckGo 搜索服务器：完全免费无密钥的网页搜索",
       "transport": "STDIO",
       "command": "uvx",
@@ -457,13 +462,13 @@
       "tags": [
         "web-search"
       ],
-      "category": "web-search",
+      "category": "WebSearch",
       "homepage": "https://github.com/nickclyde/duckduckgo-mcp-server",
       "envSchema": [],
       "notes": "搜索类里唯一免密钥的选择，适合先跑通链路。"
     },
     {
-      "name": "exa",
+      "name": "Exa",
       "description": "Exa 搜索服务器：神经/关键词混合搜索与抓取，面向 AI Agent 优化",
       "transport": "STDIO",
       "command": "npx",
@@ -480,7 +485,7 @@
       "tags": [
         "web-search"
       ],
-      "category": "web-search",
+      "category": "WebSearch",
       "homepage": "https://github.com/exa-labs/exa-mcp-server",
       "envSchema": [
         {
@@ -492,7 +497,7 @@
       "notes": "npm 上的 exa-mcp-server（JS 实现；PyPI 无此包）。"
     },
     {
-      "name": "firecrawl",
+      "name": "Firecrawl",
       "description": "Firecrawl 网页转 Markdown 服务：单页/整站爬取、JS 渲染、结构化抽取——把任意网页变成 LLM 可用的干净数据。",
       "transport": "STDIO",
       "command": "npx",
@@ -511,7 +516,7 @@
         "scraping",
         "crawl"
       ],
-      "category": "web-search",
+      "category": "WebSearch",
       "homepage": "https://github.com/firecrawl/firecrawl-mcp-server",
       "envSchema": [
         {
@@ -523,7 +528,7 @@
       "notes": "与 fetch 的区别：整站爬取 + JS 渲染 + 结构化抽取。"
     },
     {
-      "name": "kagi",
+      "name": "Kagi",
       "description": "Kagi 搜索服务器：无广告隐私搜索与通用摘要器",
       "transport": "STDIO",
       "command": "uvx",
@@ -539,7 +544,7 @@
       "tags": [
         "web-search"
       ],
-      "category": "web-search",
+      "category": "WebSearch",
       "homepage": "https://github.com/kagisearch/kagimcp",
       "envSchema": [
         {
@@ -551,7 +556,7 @@
       "notes": "包名 kagimcp（不是 @kagimcp/mcp-kagi）。"
     },
     {
-      "name": "omnisearch",
+      "name": "Omnisearch",
       "description": "聚合搜索 MCP（spences10）：一套工具横跨 Tavily / Brave / Kagi / Exa 等多家搜索供应商——配了谁的 Key 就用谁，没配的自动跳过——搜索降级与冗余的一站式方案。",
       "transport": "STDIO",
       "command": "npx",
@@ -570,7 +575,7 @@
         "aggregator",
         "multi-provider"
       ],
-      "category": "web-search",
+      "category": "WebSearch",
       "homepage": "https://github.com/spences10/mcp-omnisearch",
       "envSchema": [
         {
@@ -597,7 +602,7 @@
       "notes": "至少配置一家供应商密钥，未配置的供应商自动跳过。"
     },
     {
-      "name": "tavily",
+      "name": "Tavily",
       "description": "Tavily 搜索服务器：面向 LLM 的搜索与正文抽取、含原始内容分级",
       "transport": "STDIO",
       "command": "uvx",
@@ -613,7 +618,7 @@
       "tags": [
         "web-search"
       ],
-      "category": "web-search",
+      "category": "WebSearch",
       "homepage": "https://github.com/tavily-ai/tavily-mcp",
       "envSchema": [
         {
@@ -625,7 +630,7 @@
       "notes": "Python 实现（uvx tavily-mcp，非 @tavily/mcp——后者已不存在）。"
     },
     {
-      "name": "browserbase",
+      "name": "Browserbase",
       "description": "Browserbase 云端浏览器：托管会话、快照、控制台日志，无需本地浏览器",
       "transport": "STDIO",
       "command": "npx",
@@ -642,7 +647,7 @@
       "tags": [
         "browser"
       ],
-      "category": "browser",
+      "category": "Browser",
       "homepage": "https://github.com/browserbase/mcp-server-browserbase",
       "envSchema": [
         {
@@ -664,7 +669,7 @@
       "notes": "浏览器跑在云上，沙箱内无需下载内核。"
     },
     {
-      "name": "chrome-devtools",
+      "name": "ChromeDevtools",
       "description": "Chrome DevTools 服务器：驱动 Chrome 实例、抓取网络轨迹与性能数据",
       "transport": "STDIO",
       "command": "npx",
@@ -682,13 +687,13 @@
       "tags": [
         "browser"
       ],
-      "category": "browser",
+      "category": "Browser",
       "homepage": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
       "envSchema": [],
       "notes": "Google 官方维护；--headless 适配无显示器环境。"
     },
     {
-      "name": "playwright",
+      "name": "Playwright",
       "description": "Playwright 浏览器自动化：导航/点击/填充/截图，基于无障碍树快照交互",
       "transport": "STDIO",
       "command": "npx",
@@ -706,13 +711,13 @@
       "tags": [
         "browser"
       ],
-      "category": "browser",
+      "category": "Browser",
       "homepage": "https://github.com/microsoft/playwright-mcp",
       "envSchema": [],
       "notes": "--headless 为无显示器沙箱的官方推荐形态；首次运行会下载浏览器内核。"
     },
     {
-      "name": "puppeteer",
+      "name": "Puppeteer",
       "description": "Puppeteer 浏览器自动化：页面/框架/控制台求值（已归档参考实现）",
       "transport": "STDIO",
       "command": "npx",
@@ -729,13 +734,13 @@
       "tags": [
         "browser"
       ],
-      "category": "browser",
+      "category": "Browser",
       "homepage": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/puppeteer",
       "envSchema": [],
       "notes": "官方 reference servers 已归档（servers-archived），仍可安装使用。 新项目建议选 Playwright。"
     },
     {
-      "name": "astra-db",
+      "name": "AstraDb",
       "description": "DataStax 官方 Astra DB MCP：连接无服务器 Cassandra 云库，建键空间、跑 CQL、向量检索与表结构自动生成一条龙——生产级 NoSQL 后端的完整工作台。",
       "transport": "STDIO",
       "command": "npx",
@@ -754,7 +759,7 @@
         "cassandra",
         "serverless"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/datastax/astra-db-mcp",
       "envSchema": [
         {
@@ -776,7 +781,7 @@
       "notes": "令牌与端点都在 Astra 控制台项目页获取。"
     },
     {
-      "name": "chroma",
+      "name": "Chroma",
       "description": "Chroma 官方向量数据库 MCP：本地持久 / 远程 HTTP / 云端三种客户端模式，集合与文档管理、语义检索、可插拔嵌入函数——轻量 RAG 与 Agent 记忆的零门槛方案。",
       "transport": "STDIO",
       "command": "uvx",
@@ -794,7 +799,7 @@
         "vector",
         "embeddings"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/chroma-core/chroma-mcp",
       "envSchema": [
         {
@@ -821,7 +826,7 @@
       "notes": "持久化建议 CHROMA_CLIENT_TYPE=persistent 并把数据目录放进 /workspace。"
     },
     {
-      "name": "dbhub",
+      "name": "Dbhub",
       "description": "DBHub 通用数据库网关：MySQL/PostgreSQL/SQLite/ClickHouse 等一套搞定",
       "transport": "STDIO",
       "command": "npx",
@@ -840,13 +845,13 @@
       "tags": [
         "database"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/bytebase/dbhub",
       "envSchema": [],
       "notes": "--dsn 换成 postgresql://… 或 mysql://… 即切换数据库类型。"
     },
     {
-      "name": "duckdb",
+      "name": "Duckdb",
       "description": "DuckDB MCP（MotherDuck 维护）：对本地/内存 DuckDB 跑分析 SQL——单文件 OLAP，CSV/Parquet 直接查询。",
       "transport": "STDIO",
       "command": "uvx",
@@ -866,7 +871,7 @@
         "olap",
         "analytics"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/motherduckdb/mcp-server-duckdb",
       "envSchema": [
         {
@@ -878,7 +883,7 @@
       "notes": "默认内存库；--db-path 可指到 /workspace 持久化文件。"
     },
     {
-      "name": "elasticsearch",
+      "name": "Elasticsearch",
       "description": "Elastic 官方 MCP：对 Elasticsearch 集群跑查询/聚合、管理索引与映射——日志与检索场景的直连通道。",
       "transport": "STDIO",
       "command": "npx",
@@ -897,7 +902,7 @@
         "search",
         "observability"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/elastic/mcp-server-elasticsearch",
       "envSchema": [
         {
@@ -914,7 +919,7 @@
       "notes": "官方 npm 分发。"
     },
     {
-      "name": "influxdb",
+      "name": "Influxdb",
       "description": "InfluxData 官方 InfluxDB 3 MCP：查询时序数据、管理数据库与令牌，内置按需查询机制控制返回量——IoT 指标、监控时序与行情数据的对话式分析通道。",
       "transport": "STDIO",
       "command": "npx",
@@ -933,7 +938,7 @@
         "time-series",
         "iot"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/influxdata/influxdb3_mcp_server",
       "envSchema": [
         {
@@ -955,7 +960,7 @@
       "notes": "官方 npm 分发；Cloud Dedicated/Clustered 用账号 ID+集群 ID 组合认证。"
     },
     {
-      "name": "mongodb",
+      "name": "Mongodb",
       "description": "MongoDB 官方 MCP：连接实例/Atlas，查集合、跑聚合管道、分析 schema 与索引。",
       "transport": "STDIO",
       "command": "npx",
@@ -974,7 +979,7 @@
         "nosql",
         "atlas"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/mongodb-js/mongodb-mcp-server",
       "envSchema": [
         {
@@ -986,7 +991,7 @@
       "notes": "官方 npm 分发。"
     },
     {
-      "name": "motherduck",
+      "name": "Motherduck",
       "description": "MotherDuck 服务器：用 SQL 查询托管 DuckDB 数据库",
       "transport": "STDIO",
       "command": "uvx",
@@ -1004,7 +1009,7 @@
       "tags": [
         "database"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/motherduckdb/mcp-server-motherduck",
       "envSchema": [
         {
@@ -1016,7 +1021,7 @@
       "notes": "--db-path :memory: 即纯本地内存库，装好即用。"
     },
     {
-      "name": "neo4j",
+      "name": "Neo4j",
       "description": "Neo4j 图数据库 MCP：执行 Cypher 查询、探索图 schema 与节点关系，支持只读模式与响应截断控量——知识图谱、关系网络与社交/风控图谱分析的对话式入口。",
       "transport": "STDIO",
       "command": "uvx",
@@ -1034,7 +1039,7 @@
         "graph",
         "cypher"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/neo4j-contrib/mcp-neo4j",
       "envSchema": [
         {
@@ -1061,7 +1066,7 @@
       "notes": "Neo4j 官方团队维护；加 --read-only 参数可锁定只读。"
     },
     {
-      "name": "neon",
+      "name": "Neon",
       "description": "Neon 官方 MCP：serverless Postgres 平台的项目/分支/表管理与时点恢复——分支即数据库的云原生玩法。",
       "transport": "STDIO",
       "command": "npx",
@@ -1080,7 +1085,7 @@
         "postgres",
         "serverless"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/neondatabase/mcp-server-neon",
       "envSchema": [
         {
@@ -1092,7 +1097,7 @@
       "notes": "官方 npm 分发。"
     },
     {
-      "name": "postgres",
+      "name": "Postgres",
       "description": "官方 PostgreSQL 服务器：schema 感知查询，默认只读（已归档参考实现）",
       "transport": "STDIO",
       "command": "uvx",
@@ -1109,13 +1114,13 @@
       "tags": [
         "database"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres",
       "envSchema": [],
       "notes": "连接串是位置参数（无 POSTGRESQL_* 环境变量）；添加后请编辑命令替换。"
     },
     {
-      "name": "qdrant",
+      "name": "Qdrant",
       "description": "Qdrant 官方向量数据库 MCP：集合管理、向量写入与语义检索，内置 fastembed 本地嵌入——为 Agent 补上长期记忆与 RAG 检索的存储底座，云端本地双形态。",
       "transport": "STDIO",
       "command": "uvx",
@@ -1133,7 +1138,7 @@
         "vector",
         "rag"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/qdrant/mcp-server-qdrant",
       "envSchema": [
         {
@@ -1155,7 +1160,7 @@
       "notes": "本地嵌入自动拉取 fastembed 模型；云托管需 API Key。"
     },
     {
-      "name": "redis",
+      "name": "Redis",
       "description": "Redis 官方 MCP：直连 Redis / Redis Cloud 执行命令、扫描键空间、读写五大数据结构并解释命令语义——缓存排查、会话存储检查与队列调试场景的直连通道。",
       "transport": "STDIO",
       "command": "uvx",
@@ -1175,7 +1180,7 @@
         "cache",
         "kv"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/redis/mcp-redis",
       "envSchema": [
         {
@@ -1187,7 +1192,7 @@
       "notes": "官方 Python 形态（redis/mcp-redis 仓库 → PyPI redis-mcp-server）。"
     },
     {
-      "name": "sqlite",
+      "name": "Sqlite",
       "description": "官方 SQLite 服务器：带 schema 感知的读写查询与分析",
       "transport": "STDIO",
       "command": "uvx",
@@ -1205,13 +1210,13 @@
       "tags": [
         "database"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite",
       "envSchema": [],
       "notes": "官方 SQLite 是 Python 包（--db-path 指定库文件）。"
     },
     {
-      "name": "supabase",
+      "name": "Supabase",
       "description": "Supabase 官方 MCP：项目管理、表结构/迁移、RLS 策略与 SQL 查询——serverless Postgres 全栈工作台。",
       "transport": "STDIO",
       "command": "npx",
@@ -1230,7 +1235,7 @@
         "postgres",
         "backend"
       ],
-      "category": "database",
+      "category": "Database",
       "homepage": "https://github.com/supabase-community/supabase-mcp",
       "envSchema": [
         {
@@ -1247,7 +1252,7 @@
       "notes": "官方 npm 分发，token 走环境变量。"
     },
     {
-      "name": "git",
+      "name": "Git",
       "description": "官方 Git 服务器：克隆/状态/差异/提交/分支/标签等仓库操作",
       "transport": "STDIO",
       "command": "uvx",
@@ -1265,13 +1270,13 @@
       "tags": [
         "git"
       ],
-      "category": "git",
+      "category": "Git",
       "homepage": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
       "envSchema": [],
       "notes": "--repository 指定仓库路径（沙箱内 /workspace）；Python 实现需 uv。"
     },
     {
-      "name": "gitlab",
+      "name": "Gitlab",
       "description": "GitLab 参考实现服务器：API 操作项目/议题/合并请求（已归档）",
       "transport": "STDIO",
       "command": "npx",
@@ -1288,7 +1293,7 @@
       "tags": [
         "git"
       ],
-      "category": "git",
+      "category": "Git",
       "homepage": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/gitlab",
       "envSchema": [
         {
@@ -1300,7 +1305,7 @@
       "notes": "官方 reference servers 已归档（servers-archived），仍可安装使用。"
     },
     {
-      "name": "server-github",
+      "name": "ServerGithub",
       "description": "GitHub 参考实现服务器：REST API 操作仓库/议题/PR/文件（已归档）",
       "transport": "STDIO",
       "command": "npx",
@@ -1317,7 +1322,7 @@
       "tags": [
         "git"
       ],
-      "category": "git",
+      "category": "Git",
       "homepage": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/github",
       "envSchema": [
         {
@@ -1329,7 +1334,7 @@
       "notes": "官方 reference servers 已归档（servers-archived），仍可安装使用。 无 Docker 时用它。"
     },
     {
-      "name": "aws-billing",
+      "name": "AwsBilling",
       "description": "AWS 官方账单与成本管理 MCP（awslabs）：Cost Explorer 成本分析、预算监控、免费额度用量追踪与成本异常检测——云上项目控成本、防超额的财务管家。",
       "transport": "STDIO",
       "command": "uvx",
@@ -1347,7 +1352,7 @@
         "cost",
         "billing"
       ],
-      "category": "cloud",
+      "category": "Cloud",
       "homepage": "https://github.com/awslabs/mcp/tree/main/src/billing-cost-management-mcp-server",
       "envSchema": [
         {
@@ -1369,7 +1374,7 @@
       "notes": "取代已弃用的 cost-explorer-mcp-server；需具备账单只读权限的 IAM 凭据。"
     },
     {
-      "name": "aws-iac",
+      "name": "AwsIac",
       "description": "AWS 官方 IaC MCP（awslabs）：CloudFormation 模板校验与安全合规检查、部署失败智能诊断、CDK 文档与代码样例检索——云基础设施即代码的开发与排障助手。",
       "transport": "STDIO",
       "command": "uvx",
@@ -1387,7 +1392,7 @@
         "iac",
         "cloudformation"
       ],
-      "category": "cloud",
+      "category": "Cloud",
       "homepage": "https://github.com/awslabs/mcp/tree/main/src/aws-iac-mcp-server",
       "envSchema": [
         {
@@ -1404,7 +1409,7 @@
       "notes": "取代已弃用的 cdk-mcp-server；文档类工具免凭据，部署排障需 AWS 凭据。"
     },
     {
-      "name": "cloudflare",
+      "name": "Cloudflare",
       "description": "Cloudflare 官方远端 MCP：Workers/R2/DNS/审计日志（流式 HTTP 端点）",
       "transport": "HTTP",
       "url": "https://mcp.cloudflare.com/mcp",
@@ -1417,13 +1422,13 @@
       "tags": [
         "cloud"
       ],
-      "category": "cloud",
+      "category": "Cloud",
       "homepage": "https://github.com/cloudflare/mcp-server-cloudflare",
       "envSchema": [],
       "notes": "连接时按提示完成 OAuth 浏览器授权；npm 包形态已转向远端 Code Mode。"
     },
     {
-      "name": "kubernetes",
+      "name": "Kubernetes",
       "description": "Kubernetes 服务器：Pod/部署/事件操作与 YAML 清单管理",
       "transport": "STDIO",
       "command": "uvx",
@@ -1439,13 +1444,13 @@
       "tags": [
         "cloud"
       ],
-      "category": "cloud",
+      "category": "Cloud",
       "homepage": "https://github.com/Flux159/mcp-server-kubernetes",
       "envSchema": [],
       "notes": "默认读 ~/.kube/config；沙箱内需把配置挂载进 rootfs。"
     },
     {
-      "name": "datadog",
+      "name": "Datadog",
       "description": "Datadog 全域观测 MCP：查询指标、日志、APM 追踪、监控器与事件流，跨区域站点（com/eu）可切换——SRE 值班排障、线上问题定位与告警根因分析的统一观测台。",
       "transport": "STDIO",
       "command": "npx",
@@ -1464,7 +1469,7 @@
         "logs",
         "apm"
       ],
-      "category": "observability",
+      "category": "Observability",
       "homepage": "https://github.com/GeLi2001/datadog-mcp-server",
       "envSchema": [
         {
@@ -1481,7 +1486,7 @@
       "notes": "社区实现（GeLi2001）走官方 API；欧盟站加 --site=datadoghq.eu。"
     },
     {
-      "name": "grafana",
+      "name": "Grafana",
       "description": "Grafana 服务器：仪表盘/数据源/健康检查",
       "transport": "STDIO",
       "command": "uvx",
@@ -1497,7 +1502,7 @@
       "tags": [
         "observability"
       ],
-      "category": "observability",
+      "category": "Observability",
       "homepage": "https://github.com/grafana/mcp-grafana",
       "envSchema": [
         {
@@ -1514,7 +1519,7 @@
       "notes": "PyPI 包名 mcp-grafana（uvx 直跑）。"
     },
     {
-      "name": "prometheus",
+      "name": "Prometheus",
       "description": "Prometheus 监控 MCP：执行 PromQL 即时与范围查询、列出指标名与元数据、检查告警规则与服务发现状态——SRE 值班、服务可观测性与容量规划的对话式分析入口。",
       "transport": "STDIO",
       "command": "npx",
@@ -1533,7 +1538,7 @@
         "promql",
         "metrics"
       ],
-      "category": "observability",
+      "category": "Observability",
       "homepage": "https://github.com/jeanlopezxyz/mcp-prometheus",
       "envSchema": [
         {
@@ -1545,7 +1550,7 @@
       "notes": "也支持 --namespace/--service 参数走 K8s 服务发现直连。"
     },
     {
-      "name": "sentry",
+      "name": "Sentry",
       "description": "Sentry 服务器：议题/事件/堆栈/性能指标查询",
       "transport": "STDIO",
       "command": "npx",
@@ -1562,7 +1567,7 @@
       "tags": [
         "observability"
       ],
-      "category": "observability",
+      "category": "Observability",
       "homepage": "https://github.com/getsentry/sentry-mcp",
       "envSchema": [
         {
@@ -1574,7 +1579,7 @@
       "notes": "官方 npm 包是 @sentry/mcp-server；环境变量 SENTRY_ACCESS_TOKEN。"
     },
     {
-      "name": "atlassian",
+      "name": "Atlassian",
       "description": "Atlassian MCP：一套服务器通吃 Jira 与 Confluence——搜索/创建/编辑议题、评论、页面与空间，Cloud 与 Data Center 双形态——敏捷团队的工单与文档中台。",
       "transport": "STDIO",
       "command": "uvx",
@@ -1592,7 +1597,7 @@
         "jira",
         "confluence"
       ],
-      "category": "productivity",
+      "category": "Productivity",
       "homepage": "https://github.com/sooperset/mcp-atlassian",
       "envSchema": [
         {
@@ -1629,7 +1634,7 @@
       "notes": "Cloud 认证 = 邮箱 + API Token；Data Center 用 PAT（JIRA_PERSONAL_TOKEN）。"
     },
     {
-      "name": "excel",
+      "name": "Excel",
       "description": "Excel 工作簿 MCP（Haris Musa）：免装 Office 创建/读取/编辑 xlsx——公式、格式、数据校验与图表全套操作，--allow-dir 限定工作目录——报表生成与数据整理自动化。",
       "transport": "STDIO",
       "command": "uvx",
@@ -1650,7 +1655,7 @@
         "excel",
         "xlsx"
       ],
-      "category": "productivity",
+      "category": "Productivity",
       "homepage": "https://github.com/haris-musa/excel-mcp-server",
       "envSchema": [
         {
@@ -1662,7 +1667,7 @@
       "notes": "uvx 形态需带 stdio 子命令；工作簿默认限制在 /workspace。"
     },
     {
-      "name": "linear",
+      "name": "Linear",
       "description": "Linear 远端 MCP：议题/项目/周期（OAuth 授权）",
       "transport": "HTTP",
       "url": "https://mcp.linear.app/mcp",
@@ -1675,13 +1680,13 @@
       "tags": [
         "productivity"
       ],
-      "category": "productivity",
+      "category": "Productivity",
       "homepage": "https://mcp.linear.app",
       "envSchema": [],
       "notes": "2025 起官方推荐流式 HTTP /mcp 端点（旧 /sse 已下线）。"
     },
     {
-      "name": "notion",
+      "name": "Notion",
       "description": "Notion 服务器：搜索与编辑页面/块（官方 API）",
       "transport": "STDIO",
       "command": "npx",
@@ -1698,7 +1703,7 @@
       "tags": [
         "productivity"
       ],
-      "category": "productivity",
+      "category": "Productivity",
       "homepage": "https://github.com/makenotion/notion-mcp-server",
       "envSchema": [
         {
@@ -1710,7 +1715,7 @@
       "notes": "Authorization 与 Notion-Version 打包在同一个 JSON 环境变量里。"
     },
     {
-      "name": "obsidian",
+      "name": "Obsidian",
       "description": "Obsidian 服务器：经 Local REST API 读取/搜索本地知识库笔记",
       "transport": "STDIO",
       "command": "npx",
@@ -1727,7 +1732,7 @@
       "tags": [
         "productivity"
       ],
-      "category": "productivity",
+      "category": "Productivity",
       "homepage": "https://github.com/MarkusPfundstein/mcp-obsidian",
       "envSchema": [
         {
@@ -1739,7 +1744,7 @@
       "notes": "手机需与电脑同网段，且装好 Local REST API 社区插件。"
     },
     {
-      "name": "office-word",
+      "name": "OfficeWord",
       "description": "Word 文档 MCP（GongRzhe）：创建与编辑 .docx——段落/表格/图片/页眉页脚全支持，内置专业排版模板与样式套用——合同、报告与公文的自动化生成流水线。",
       "transport": "STDIO",
       "command": "uvx",
@@ -1757,13 +1762,13 @@
         "word",
         "docx"
       ],
-      "category": "productivity",
+      "category": "Productivity",
       "homepage": "https://github.com/GongRzhe/Office-Word-MCP-Server",
       "envSchema": [],
       "notes": "与 excel 组成 Office 文档双件套，免装 Office 原生读写。"
     },
     {
-      "name": "pandoc",
+      "name": "Pandoc",
       "description": "Pandoc 文档转换 MCP：Markdown / HTML / Word / PPTX / PDF 等数十种格式互转，支持 Mermaid 图渲染与参考文档模板——报告交付与格式迁移的瑞士军刀。",
       "transport": "STDIO",
       "command": "uvx",
@@ -1781,13 +1786,13 @@
         "documents",
         "conversion"
       ],
-      "category": "productivity",
+      "category": "Productivity",
       "homepage": "https://github.com/vivekVells/mcp-pandoc",
       "envSchema": [],
       "notes": "需 rootfs 内预装 pandoc CLI（apt install pandoc）后工具才可用。"
     },
     {
-      "name": "shrimp-task-manager",
+      "name": "ShrimpTaskManager",
       "description": "Shrimp 任务管理 MCP：专为 AI Agent 设计的链式任务管理——思维链拆解、任务反思与风格协商三件套，任务状态跨会话持久化——长程复杂任务的自我编排器。",
       "transport": "STDIO",
       "command": "npx",
@@ -1806,7 +1811,7 @@
         "planning",
         "agent"
       ],
-      "category": "productivity",
+      "category": "Productivity",
       "homepage": "https://github.com/cjo4m06/mcp-shrimp-task-manager",
       "envSchema": [
         {
@@ -1818,7 +1823,7 @@
       "notes": "建议 DATA_DIR 指到 /workspace 下以便沙箱内持久化。"
     },
     {
-      "name": "todoist",
+      "name": "Todoist",
       "description": "Todoist 官方 MCP：自然语言管理任务——创建任务与项目、设截止日期与优先级、按过滤器批量查询、批量完成与移动——把待办清单变成 Agent 可直接调度的执行面板。",
       "transport": "STDIO",
       "command": "npx",
@@ -1837,7 +1842,7 @@
         "tasks",
         "todo"
       ],
-      "category": "productivity",
+      "category": "Productivity",
       "homepage": "https://github.com/Doist/todoist-mcp",
       "envSchema": [
         {
@@ -1849,7 +1854,7 @@
       "notes": "官方 npm 分发（Doist）；另有托管远端 ai.todoist.net/mcp（OAuth）。"
     },
     {
-      "name": "commands",
+      "name": "Commands",
       "description": "任意命令执行服务器（g0t4 维护，高风险，务必在沙箱内跑）",
       "transport": "STDIO",
       "command": "npx",
@@ -1866,13 +1871,13 @@
       "tags": [
         "desktop"
       ],
-      "category": "desktop",
+      "category": "Desktop",
       "homepage": "https://github.com/g0t4/mcp-server-commands",
       "envSchema": [],
       "notes": "npm 无 scope 的 mcp-server-commands；建议只在沙箱启用。"
     },
     {
-      "name": "desktop-commander",
+      "name": "DesktopCommander",
       "description": "桌面指挥官：终端命令执行、进程与文件管理（高权限）",
       "transport": "STDIO",
       "command": "npx",
@@ -1889,13 +1894,13 @@
       "tags": [
         "desktop"
       ],
-      "category": "desktop",
+      "category": "Desktop",
       "homepage": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
       "envSchema": [],
       "notes": "包名 @wonderwhy-er/desktop-commander（不带 -mcp 后缀）。"
     },
     {
-      "name": "stripe",
+      "name": "Stripe",
       "description": "Stripe 服务器：客户/发票/订阅等 API 操作",
       "transport": "STDIO",
       "command": "npx",
@@ -1912,7 +1917,7 @@
       "tags": [
         "finance"
       ],
-      "category": "finance",
+      "category": "Finance",
       "homepage": "https://github.com/stripe/agent-toolkit",
       "envSchema": [
         {
@@ -1924,7 +1929,7 @@
       "notes": "会真实调用计费 API；强烈建议只用测试模式密钥。"
     },
     {
-      "name": "blender",
+      "name": "Blender",
       "description": "Blender 3D 创作 MCP（ahujasid）：场景创建与修改、Python 脚本注入执行、文生 3D 资产生成——Agent 直接驱动桌面端 Blender 建模、材质与渲染。",
       "transport": "STDIO",
       "command": "uvx",
@@ -1942,7 +1947,7 @@
         "3d",
         "blender"
       ],
-      "category": "design",
+      "category": "Design",
       "homepage": "https://github.com/ahujasid/blender-mcp",
       "envSchema": [
         {
@@ -1959,7 +1964,7 @@
       "notes": "需桌面端 Blender 安装配套插件；沙箱内用 BLENDER_HOST 连局域网机器。"
     },
     {
-      "name": "figma-context",
+      "name": "FigmaContext",
       "description": "Figma 上下文服务器：抽取布局/样式供 AI 生成代码",
       "transport": "STDIO",
       "command": "npx",
@@ -1976,7 +1981,7 @@
       "tags": [
         "design"
       ],
-      "category": "design",
+      "category": "Design",
       "homepage": "https://github.com/GLips/Figma-Context-MCP",
       "envSchema": [
         {
@@ -1988,7 +1993,7 @@
       "notes": "get_figma_data 取结构，建议配合 Coding 工位使用。"
     },
     {
-      "name": "quickchart",
+      "name": "Quickchart",
       "description": "QuickChart 图表生成 MCP（GongRzhe）：用 Chart.js 语法描述即得 PNG 图表 URL——柱状/折线/饼图/雷达随手出图，无需本地渲染环境——数据报告与可视化的最短路径。",
       "transport": "STDIO",
       "command": "npx",
@@ -2007,13 +2012,13 @@
         "charts",
         "visualization"
       ],
-      "category": "design",
+      "category": "Design",
       "homepage": "https://github.com/GongRzhe/Quickchart-MCP-Server",
       "envSchema": [],
       "notes": "图表由 quickchart.io 云端渲染，免密钥。"
     },
     {
-      "name": "gmail-autoauth",
+      "name": "GmailAutoauth",
       "description": "Gmail MCP（GongRzhe autoauth 版）：读取与搜索邮件、撰写草稿、自动回复，Google OAuth 一次授权长期刷新——邮件客服与日常沟通的自动化通道。",
       "transport": "STDIO",
       "command": "npx",
@@ -2032,7 +2037,7 @@
         "gmail",
         "email"
       ],
-      "category": "communication",
+      "category": "Communication",
       "homepage": "https://github.com/GongRzhe/Gmail-MCP-Server",
       "envSchema": [
         {
@@ -2044,7 +2049,7 @@
       "notes": "首次先运行 npx @gongrzhe/server-gmail-autoauth-mcp auth 完成浏览器授权。"
     },
     {
-      "name": "server-slack",
+      "name": "ServerSlack",
       "description": "Slack 参考实现服务器：频道/消息/用户（已归档）",
       "transport": "STDIO",
       "command": "npx",
@@ -2061,7 +2066,7 @@
       "tags": [
         "communication"
       ],
-      "category": "communication",
+      "category": "Communication",
       "homepage": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/slack",
       "envSchema": [
         {
@@ -2083,7 +2088,7 @@
       "notes": "官方 reference servers 已归档（servers-archived），仍可安装使用。 托管远端形态见 remote/slack-remote。"
     },
     {
-      "name": "slack-remote",
+      "name": "SlackRemote",
       "description": "Slack 官方远端 MCP：消息/频道（OAuth 授权）",
       "transport": "HTTP",
       "url": "https://mcp.slack.com/mcp",
@@ -2096,13 +2101,13 @@
       "tags": [
         "communication"
       ],
-      "category": "communication",
+      "category": "Communication",
       "homepage": "https://api.slack.com/mcp",
       "envSchema": [],
       "notes": "官方托管形态，无需本地进程与令牌配置。"
     },
     {
-      "name": "amap",
+      "name": "Amap",
       "description": "高德地图官方 MCP：地理编码/逆地理/POI 搜索/路线规划（驾车/步行/公交）/天气查询——中文地点与国内出行场景首选。",
       "transport": "STDIO",
       "command": "npx",
@@ -2121,7 +2126,7 @@
         "china",
         "routing"
       ],
-      "category": "location",
+      "category": "Location",
       "homepage": "https://lbs.amap.com/api/mcp-server/gettingstarted",
       "envSchema": [
         {
@@ -2133,7 +2138,7 @@
       "notes": "国内地图场景对 google-maps 的互补。"
     },
     {
-      "name": "google-maps",
+      "name": "GoogleMaps",
       "description": "Google 地图服务器：地理编码/路线/地点搜索（已归档参考实现）",
       "transport": "STDIO",
       "command": "npx",
@@ -2150,7 +2155,7 @@
       "tags": [
         "location"
       ],
-      "category": "location",
+      "category": "Location",
       "homepage": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/google-maps",
       "envSchema": [
         {
@@ -2162,7 +2167,7 @@
       "notes": "官方 reference servers 已归档（servers-archived），仍可安装使用。"
     },
     {
-      "name": "gdrive",
+      "name": "Gdrive",
       "description": "Google Drive 服务器：搜索与读取云盘文件（已归档参考实现）",
       "transport": "STDIO",
       "command": "npx",
@@ -2179,7 +2184,7 @@
       "tags": [
         "data"
       ],
-      "category": "data",
+      "category": "Data",
       "homepage": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/gdrive",
       "envSchema": [
         {
@@ -2191,7 +2196,7 @@
       "notes": "官方 reference servers 已归档（servers-archived），仍可安装使用。 需先把 Google Cloud OAuth 凭据文件放进沙箱。"
     },
     {
-      "name": "android-emulator",
+      "name": "AndroidEmulator",
       "description": "Android 模拟器控制（ADB 语义层）：应用安装/启动、tap/swipe/input 注入、截屏与 logcat 抓取——设备自动化测试闭环。",
       "transport": "STDIO",
       "command": "npx",
@@ -2212,7 +2217,7 @@
         "mobile",
         "testing"
       ],
-      "category": "devtools",
+      "category": "Devtools",
       "homepage": "https://github.com/zcaceres/android-mcp-server",
       "envSchema": [
         {
@@ -2224,7 +2229,7 @@
       "notes": "沙箱内需能访问宿主 adb（网络 adb connect 或 USB 直通）；工具含 install/tap/swipe/type/screenshot/logcat。"
     },
     {
-      "name": "apifox",
+      "name": "Apifox",
       "description": "Apifox 官方 MCP：把 Apifox 项目里的接口文档喂给 AI——API 结构、字段说明与示例数据直接可查，接口变更实时同步——前后端联调与接口对接不再靠截图与文档传来传去。",
       "transport": "STDIO",
       "command": "npx",
@@ -2244,7 +2249,7 @@
         "api",
         "docs"
       ],
-      "category": "devtools",
+      "category": "Devtools",
       "homepage": "https://apifox.com/help/applications-and-integrations/mcp-server",
       "envSchema": [
         {
@@ -2256,7 +2261,7 @@
       "notes": "--project-id 换成你的项目 ID；私有化部署另加 --apifox-api-base-url。"
     },
     {
-      "name": "gradle",
+      "name": "Gradle",
       "description": "Gradle 依赖解析 MCP：一次调用查明 Java/Kotlin 类来自哪个依赖——自动解析各 source set 类路径、定位 JAR、返回类结构（字段/方法/修饰符）——Android 与 JVM 项目排依赖神器。",
       "transport": "STDIO",
       "command": "npx",
@@ -2275,13 +2280,13 @@
         "gradle",
         "java"
       ],
-      "category": "devtools",
+      "category": "Devtools",
       "homepage": "https://github.com/Jukipuki/gradle-mcp-server",
       "envSchema": [],
       "notes": "沙箱 rootfs 需有 JDK（javap 可用）且目标项目带 gradlew 包装器。"
     },
     {
-      "name": "jetbrains",
+      "name": "Jetbrains",
       "description": "JetBrains 官方 MCP 代理：把 IntelliJ IDEA / Android Studio / PyCharm 等 IDE 的内置能力开放给 Agent——打开文件、定位符号、执行 IDE 操作——手机上远程驾驶桌面 IDE。",
       "transport": "STDIO",
       "command": "npx",
@@ -2300,7 +2305,7 @@
         "ide",
         "proxy"
       ],
-      "category": "devtools",
+      "category": "Devtools",
       "homepage": "https://github.com/JetBrains/mcp-jetbrains",
       "envSchema": [
         {
@@ -2312,7 +2317,7 @@
       "notes": "需在 IDE 内安装官方 MCP Server 插件后配合使用。"
     },
     {
-      "name": "mcp-inspector",
+      "name": "McpInspector",
       "description": "官方 MCP Inspector：连接任意 MCP 服务器做交互式调试——列工具/资源/提示词、试调参数、查看 JSON-RPC 报文与本机会话管理。宿主 App 自身即 MCP Host，用它排障自建与市场装的每一台服务器。",
       "transport": "STDIO",
       "command": "npx",
@@ -2333,7 +2338,7 @@
         "official",
         "devtools"
       ],
-      "category": "devtools",
+      "category": "Devtools",
       "homepage": "https://github.com/modelcontextprotocol/inspector",
       "envSchema": [
         {
@@ -2350,7 +2355,7 @@
       "notes": "调试已有服务器：npx @modelcontextprotocol/inspector --cli <server-cmd> --method tools/list；沙箱内 CLI 模式为主，避免依赖桌面浏览器。"
     },
     {
-      "name": "mcp-remote",
+      "name": "McpRemote",
       "description": "远端 MCP OAuth 代理（punkpeye）：让只支持 STDIO 的客户端也能连远端 HTTP 服务器——自动处理 OAuth 授权与令牌缓存，支持自定义头与资源指示——远端生态的万能转接头。",
       "transport": "STDIO",
       "command": "npx",
@@ -2370,13 +2375,13 @@
         "oauth",
         "proxy"
       ],
-      "category": "devtools",
+      "category": "Devtools",
       "homepage": "https://github.com/punkpeye/mcp-remote",
       "envSchema": [],
       "notes": "把 URL 参数换成目标远端服务器（可加 --header 注入令牌）。"
     },
     {
-      "name": "postman",
+      "name": "Postman",
       "description": "Postman API 平台集成：工作区/集合/环境/模拟服务管理，API 调试与自动化测试直接在对话里闭环。",
       "transport": "STDIO",
       "command": "npx",
@@ -2397,7 +2402,7 @@
         "rest",
         "collections"
       ],
-      "category": "devtools",
+      "category": "Devtools",
       "homepage": "https://github.com/postmanlabs/mcp-postman",
       "envSchema": [
         {
@@ -2409,7 +2414,7 @@
       "notes": "必填 POSTMAN_API_KEY；支持集合导入导出、环境变量管理、mock 服务与 API 文档查询。"
     },
     {
-      "name": "serena",
+      "name": "Serena",
       "description": "基于语言服务器（LSP）的语义级代码分析与编辑 MCP（30k+ 星）：符号查找、引用追踪、语义重构。免费无 token，代码审计与漏洞挖掘标配，支持 TS/Python/Java/Go/Rust 等主流语言。",
       "transport": "STDIO",
       "command": "uvx",
@@ -2433,13 +2438,13 @@
         "code-review",
         "free"
       ],
-      "category": "devtools",
+      "category": "Devtools",
       "homepage": "https://github.com/oraios/serena",
       "envSchema": [],
       "notes": "PyPI serena-agent（注意：PyPI 上无归属的 serena 包是同名 AMQP 库，勿混用）。ide-assistant 上下文最省 token。"
     },
     {
-      "name": "swagger",
+      "name": "Swagger",
       "description": "Swagger / OpenAPI 调用 MCP：读取配置文件里的 API 定义，把每个端点变成 Agent 可直接调用的工具——对着存量 REST 服务做集成开发与联调测试。",
       "transport": "STDIO",
       "command": "npx",
@@ -2459,13 +2464,13 @@
         "openapi",
         "rest"
       ],
-      "category": "devtools",
+      "category": "Devtools",
       "homepage": "https://github.com/marcin-sucharski/swagger-mcp-server",
       "envSchema": [],
       "notes": "先在 /workspace 写好 config.json（含 swaggerUrl 与鉴权头）再启动。"
     },
     {
-      "name": "android-mcp-server",
+      "name": "AndroidMcpServer",
       "description": "Android MCP（minhalvp，810 星）：ADB 设备控制 —— adb shell、应用管理、logcat 抓取、scrcpy 镜像，真机/模拟器动态分析通道。",
       "transport": "STDIO",
       "command": "uv",
@@ -2487,7 +2492,7 @@
         "adb",
         "dynamic"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/minhalvp/android-mcp-server",
       "envSchema": [
         {
@@ -2499,7 +2504,7 @@
       "notes": "需 git clone 仓库到 /opt 并 uv sync，rootfs 内 adb 可用。"
     },
     {
-      "name": "apktool",
+      "name": "Apktool",
       "description": "Apktool MCP（zinja-coder 逆向套件）：APK 解包/重打包 —— smali 汇编、AndroidManifest 解析、资源解密，改包与去签名验证工作流。",
       "transport": "STDIO",
       "command": "uv",
@@ -2521,13 +2526,13 @@
         "smali",
         "repackage"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/zinja-coder/apktool-mcp-server",
       "envSchema": [],
       "notes": "需 git clone 仓库到 /opt，rootfs 内 apktool 在 PATH。"
     },
     {
-      "name": "binary-ninja",
+      "name": "BinaryNinja",
       "description": "Binary Ninja MCP（fosdickio）：商业二进制分析平台集成 —— HLIL/MLIL/LLIL 三层中间表示、跨平台反编译、脚本化批处理。",
       "transport": "STDIO",
       "command": "npx",
@@ -2547,13 +2552,13 @@
         "binary-ninja",
         "il"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/fosdickio/binary_ninja_mcp",
       "envSchema": [],
       "notes": "npm binary-ninja-mcp。需本机安装 Binary Ninja（商业授权）。"
     },
     {
-      "name": "capstone",
+      "name": "Capstone",
       "description": "Capstone MCP（Tokeii0）：轻量反汇编引擎 —— x86/ARM/MIPS 等多架构指令级反汇编，脚本化二进制批处理。",
       "transport": "STDIO",
       "command": "python",
@@ -2573,13 +2578,13 @@
         "capstone",
         "multi-arch"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/Tokeii0/capstone-mcp-server",
       "envSchema": [],
       "notes": "需 git clone 仓库到 /opt 并 pip install -e .，python -m capstone_mcp.server 启动。"
     },
     {
-      "name": "cyberchef",
+      "name": "Cyberchef",
       "description": "CyberChef MCP（npm cyberchef-mcp）：GCHQ 网络瑞士军刀 504 项数据变换全量暴露 —— 编解码、加解密、压缩解包、哈希、取证残片重组，逆向中的字符串/密文/数据流转全能解码台。",
       "transport": "STDIO",
       "command": "npx",
@@ -2599,13 +2604,13 @@
         "crypto",
         "forensics"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/doublegate/CyberChef-MCP",
       "envSchema": [],
       "notes": "npm registry 实测 4.2.0；纯 JS 无原生模块，arm64 兼容。"
     },
     {
-      "name": "frida",
+      "name": "Frida",
       "description": "Frida MCP（npm frida-mcp）：动态插桩框架 Frida 17 集成 —— hook 任意函数、读写内存、跟踪调用、绕过反调试，移动端动态分析之王。",
       "transport": "STDIO",
       "command": "npx",
@@ -2625,7 +2630,7 @@
         "hook",
         "android"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/yfe404/frida-mcp",
       "envSchema": [
         {
@@ -2637,7 +2642,7 @@
       "notes": "rootfs 需 pip 安装 frida-tools，USB/无线连接目标设备。"
     },
     {
-      "name": "gdb",
+      "name": "Gdb",
       "description": "GDB MCP（PyPI gdb-mcp）：GNU 调试器驱动集成 —— 断点/单步/内存查看、寄存器读写、调用栈回溯、崩溃分析，让 Agent 直接操纵 GDB 进行 native so 动态调试与漏洞复现。",
       "transport": "STDIO",
       "command": "uvx",
@@ -2656,13 +2661,13 @@
         "gdb",
         "dynamic"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/datobena/gdb-mcp",
       "envSchema": [],
       "notes": "PyPI 实测 1.0.1；rootfs 需 apt 安装 gdb，arm64 目标建议安装 gdb-multiarch。"
     },
     {
-      "name": "ghidra",
+      "name": "Ghidra",
       "description": "GhidraMCP（LaurieWired，10k+ 星）：接入 NSA 开源逆向框架 Ghidra —— 反编译伪代码、函数重命名、数据类型标注、交叉引用，静态分析核心引擎。",
       "transport": "STDIO",
       "command": "python",
@@ -2681,13 +2686,13 @@
         "ghidra",
         "static"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/LaurieWired/GhidraMCP",
       "envSchema": [],
       "notes": "需先 git clone 仓库到 /opt/GhidraMCP，并在 Ghidra（File→Install Extensions）安装 GhidraMCP 插件；bridge 连接 Ghidra 插件的 8080 服务。"
     },
     {
-      "name": "ida-pro",
+      "name": "IdaPro",
       "description": "IDA Pro MCP（mrexodia，12k+ 星）：Hex-Rays IDA 9 深度集成 —— 反编译、伪代码编辑、函数签名、调试器联动，商业级逆向工作流。",
       "transport": "STDIO",
       "command": "uvx",
@@ -2706,13 +2711,13 @@
         "ida",
         "hex-rays"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/mrexodia/ida-pro-mcp",
       "envSchema": [],
       "notes": "PyPI ida-pro-mcp 1.4.0。需先在 IDA 端安装插件（ida-pro-mcp --install），且 rootfs 内有 IDA 授权环境。"
     },
     {
-      "name": "jadx",
+      "name": "Jadx",
       "description": "JADX MCP（zinja-coder 逆向套件）：Java/Android 反编译器 —— DEX→Java 源码、资源还原、混淆映射，APK 静态审计首选。",
       "transport": "STDIO",
       "command": "uv",
@@ -2734,13 +2739,13 @@
         "apk",
         "decompile"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/zinja-coder/jadx-mcp-server",
       "envSchema": [],
       "notes": "需 git clone jadx-mcp-server 到 /opt，并在 JADX GUI 安装 JADX-AI 插件（zinja-coder/jadx-ai-mcp）。"
     },
     {
-      "name": "mitmproxy",
+      "name": "Mitmproxy",
       "description": "mitmproxy MCP（PyPI mitmproxy-mcp）：HTTP/HTTPS 流量中间人代理集成 —— 抓包检索、请求改写重放、TLS 指纹伪装、会话令牌提取复用、OpenAPI 规格反推，私有协议逆向与 API 逆向核心工具。",
       "transport": "STDIO",
       "command": "uvx",
@@ -2759,7 +2764,7 @@
         "mitm",
         "traffic"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/snapspecter/mitmproxy-mcp",
       "envSchema": [
         {
@@ -2771,7 +2776,7 @@
       "notes": "PyPI 实测 0.6.1（125 星）；移动端抓包将设备 Wi-Fi 代理指向沙箱地址并安装 CA 证书。"
     },
     {
-      "name": "mobsf",
+      "name": "Mobsf",
       "description": "MobSF MCP（pullkitsan/mobsf-mcp-server）：移动安全框架集成 —— APK/IPA 一键静态+动态扫描、Manifest 权限审计、硬编码密钥与组件暴露检测，移动应用安全评估标准工具。",
       "transport": "STDIO",
       "command": "npx",
@@ -2791,7 +2796,7 @@
         "sast",
         "mobsf"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/pullkitsan/mobsf-mcp-server",
       "envSchema": [
         {
@@ -2808,7 +2813,7 @@
       "notes": "需 git clone 仓库到 /opt/mobsf-mcp-server 并 npm install；rootfs 需另装 MobSF 后以其 REST API 交互。"
     },
     {
-      "name": "radare2",
+      "name": "Radare2",
       "description": "Radare2 MCP（radareorg 官方）：命令行逆向框架 r2 的 MCP 封装 —— 十六进制、反汇编、签名识别，轻量级全能分析器，可连接本地或远程 r2/iaito 会话。",
       "transport": "STDIO",
       "command": "r2pm",
@@ -2828,13 +2833,13 @@
         "radare2",
         "cli"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/radareorg/radare2-mcp",
       "envSchema": [],
       "notes": "经 r2pm（radare2 包管理器）一键拉起，rootfs 需先 apt 安装 radare2。"
     },
     {
-      "name": "reversecore",
+      "name": "Reversecore",
       "description": "Reversecore MCP（PyPI reversecore-mcp，151 工具）：一体化逆向工程套件 —— 静态分析、恶意软件检测、漏洞研究、数字取证、源码审计，安全优先设计，单一接口封装十余类分析工具链。",
       "transport": "STDIO",
       "command": "uvx",
@@ -2853,13 +2858,13 @@
         "forensics",
         "all-in-one"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/sjkim1127/Reversecore_MCP",
       "envSchema": [],
       "notes": "PyPI 实测 3.0.5（206 星，FastMCP）；根目录装好基础工具链（yara/binutils 等）后开箱即用。"
     },
     {
-      "name": "volatility",
+      "name": "Volatility",
       "description": "Volatility MCP（Gaffx）：内存取证框架 volatility3 集成 —— 进程/网络/注册表/凭证提取，恶意代码内存行为分析与取证。",
       "transport": "STDIO",
       "command": "python",
@@ -2880,13 +2885,13 @@
         "volatility",
         "malware"
       ],
-      "category": "reverse-engineering",
+      "category": "ReverseEngineering",
       "homepage": "https://github.com/Gaffx/volatility-mcp",
       "envSchema": [],
       "notes": "需 git clone 仓库到 /opt 并安装依赖；-i 参数指定待分析内存镜像路径。"
     },
     {
-      "name": "burp",
+      "name": "Burp",
       "description": "Burp Suite MCP（BurpMCP-Ultra，149 工具）：Web 安全测试平台集成 —— 请求重放、扫描器联动，经 supergateway 桥接其 SSE 端点。",
       "transport": "STDIO",
       "command": "npx",
@@ -2910,13 +2915,13 @@
         "pentest",
         "proxy"
       ],
-      "category": "security",
+      "category": "Security",
       "homepage": "https://github.com/Cy-S3c/BurpMCP-Ultra",
       "envSchema": [],
       "notes": "需在 Burp Suite 安装 BurpMCP-Ultra 扩展（BApp Store），令牌见扩展 Server 页；supergateway 为其官方 README 给出的 Claude Desktop stdio 桥接方案。"
     },
     {
-      "name": "cve",
+      "name": "Cve",
       "description": "CVE MCP（npm cve-mcp，41 工具 / 11 数据源）：漏洞情报聚合 —— NVD/EPSS/KEV/GHSA/OSV 多源查询、CPE 精确匹配、PoC 与受影响版本区间核查、Nuclei/Metasploit 模块关联，漏洞复现前置情报台。",
       "transport": "STDIO",
       "command": "npx",
@@ -2936,13 +2941,13 @@
         "intelligence",
         "nvd"
       ],
-      "category": "security",
+      "category": "Security",
       "homepage": "https://github.com/badchars/cve-mcp",
       "envSchema": [],
       "notes": "npm registry 实测 0.2.0；多数据源可选 key（NVD/OSV 等）经 env 注入增强限额，匿名亦可查询。"
     },
     {
-      "name": "metasploit",
+      "name": "Metasploit",
       "description": "Metasploit MCP（PyPI metasploit-mcp，非官方社区实现）：渗透测试框架集成 —— msfconsole 模块检索、漏洞利用、载荷生成、会话管理，漏洞验证与利用研究（仅限授权测试场景）。",
       "transport": "STDIO",
       "command": "uvx",
@@ -2961,7 +2966,7 @@
         "metasploit",
         "offensive"
       ],
-      "category": "security",
+      "category": "Security",
       "homepage": "https://github.com/setuidloot/MetasploitMCP",
       "envSchema": [
         {
@@ -2978,7 +2983,7 @@
       "notes": "PyPI 实测 3.1.0；rootfs 需安装 Metasploit Framework 并启动 msfrpcd（端口 55553），仅限授权渗透测试使用。"
     },
     {
-      "name": "nmap",
+      "name": "Nmap",
       "description": "Nmap MCP（PyPI mcp-nmap）：网络发现与端口扫描 —— 服务/OS 识别、NSE 脚本执行，内网渗透前侦察。",
       "transport": "STDIO",
       "command": "uvx",
@@ -2997,13 +3002,13 @@
         "nmap",
         "network"
       ],
-      "category": "security",
+      "category": "Security",
       "homepage": "https://github.com/zalaid/mcp-nmap",
       "envSchema": [],
       "notes": "PyPI 实测 0.1.0。rootfs 需 apt 安装 nmap。"
     },
     {
-      "name": "semgrep",
+      "name": "Semgrep",
       "description": "Semgrep 静态安全扫描 MCP（VetCoders）：按语言与规则集扫描整个项目，输出漏洞、代码质量问题与修复建议，可同步 Semgrep App 平台规则——上线前的自动化代码安检员。",
       "transport": "STDIO",
       "command": "npx",
@@ -3022,7 +3027,7 @@
         "sast",
         "code-review"
       ],
-      "category": "security",
+      "category": "Security",
       "homepage": "https://github.com/VetCoders/mcp-server-semgrep",
       "envSchema": [
         {
@@ -3034,7 +3039,7 @@
       "notes": "需 rootfs 内预装 semgrep CLI（pip install semgrep 或 npm i -g semgrep）。"
     },
     {
-      "name": "shodan",
+      "name": "Shodan",
       "description": "Shodan MCP（npm @burtthecoder/mcp-shodan）：全网设备搜索引擎 —— 端口/服务/漏洞指纹查询、地理定位，互联网暴露面情报收集。",
       "transport": "STDIO",
       "command": "npx",
@@ -3054,7 +3059,7 @@
         "shodan",
         "intelligence"
       ],
-      "category": "security",
+      "category": "Security",
       "homepage": "https://github.com/burtthecoder/mcp-shodan",
       "envSchema": [
         {
@@ -3066,7 +3071,7 @@
       "notes": "npm registry 实测 1.0.32。env 注入 SHODAN_API_KEY 后可用。"
     },
     {
-      "name": "aws-bedrock-kb",
+      "name": "AwsBedrockKb",
       "description": "AWS 官方 Bedrock 知识库 MCP（awslabs）：发现并检索 Amazon Bedrock Knowledge Bases——对话式问答、段落级引用与数据源清单——把企业 RAG 知识库接入 Agent 工具链。",
       "transport": "STDIO",
       "command": "uvx",
@@ -3084,7 +3089,7 @@
         "rag",
         "bedrock"
       ],
-      "category": "ai-ml",
+      "category": "AiMl",
       "homepage": "https://github.com/awslabs/mcp/tree/main/src/bedrock-kb-retrieval-mcp-server",
       "envSchema": [
         {
